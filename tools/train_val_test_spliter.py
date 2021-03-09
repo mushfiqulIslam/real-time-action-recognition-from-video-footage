@@ -81,7 +81,3 @@ def split():
     test = pd.DataFrame(listOfTestData, columns = ['Video_url', 'Action'])
     test.to_csv(os.path.join(PATH_TO_SAVE_SPLITED_DATASET, 'test.csv'))
     print("Done")
-
-
-if __name__ == '__main__':
-    split()
