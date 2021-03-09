@@ -14,14 +14,14 @@ import os
 	--------------------------------------------------------------
 '''
 
-LIST_OF_SLAP_DIR = ["/home/mushfiqul/Mushfiqul/CSE/Thesis2.0/Codes/Dataset_scale/slap/"]
-LIST_OF_PUNCH_DIR = ["/home/mushfiqul/Mushfiqul/CSE/Thesis2.0/Codes/Dataset_scale/punch/"]
-LIST_OF_KICK_DIR = ["/home/mushfiqul/Mushfiqul/CSE/Thesis2.0/Codes/Dataset_scale/kick/"]
+LIST_OF_SLAP_DIR = ["E:/real-time-action-recognition-from-video-footage/dataset/slap/"]
+LIST_OF_PUNCH_DIR = ["E:/real-time-action-recognition-from-video-footage/dataset/punch/"]
+LIST_OF_KICK_DIR = ["E:/real-time-action-recognition-from-video-footage/dataset/kick/"]
 
 VAL_SET_RATIO = 0.1
 TEST_SET_RATIO = 0.4   # NUMBER_OF_TEST_SET = NUMBER_OF_TOTAL_DATA * TEST_SET_RATIO
 
-PATH_TO_SAVE_SPLITED_DATASET = "/home/mushfiqul/Mushfiqul/CSE/Thesis2.0/Codes/data"
+PATH_TO_SAVE_SPLITED_DATASET = "E:/real-time-action-recognition-from-video-footage/dataset"
 
 def AccumulateAllVideoFromDifferentDir(LIST_OF_DIR_THAT_CONTAINS_VIDEOS_):
     listOfPathToVideos = []
@@ -54,7 +54,8 @@ def WriteDataSetToFile(LIST_OF_DATA_, targetFileName_):
         for eachData in LIST_OF_DATA_:
             fileWriter.write(eachData + "\n")
 
-if __name__ == "__main__":
+def split():
+    print("Splitting the ginen dataset into Train Test={0} Validation={1}".format(TEST_SET_RATIO, VAL_SET_RATIO))
     #Preparing Dataset List
     #slap
     listofSlapVideos = AccumulateAllVideoFromDifferentDir(LIST_OF_SLAP_DIR)
@@ -81,3 +82,4 @@ if __name__ == "__main__":
     listOfTestData = testSlapVideos + testPunchVideos + testKickVideos
     random.shuffle(listOfTestData)
     WriteDataSetToFile(listOfTestData, os.path.join(PATH_TO_SAVE_SPLITED_DATASET, 'test.txt') )
+    print("Done")
