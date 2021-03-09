@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import random
 import os
+import pandas as pd
 '''
     This script will save 3 files: train.txt, val.txt, test.txt.
     each file has the following format:
@@ -14,14 +15,14 @@ import os
 	--------------------------------------------------------------
 '''
 
-LIST_OF_SLAP_DIR = ["E:/real-time-action-recognition-from-video-footage/dataset/slap/"]
-LIST_OF_PUNCH_DIR = ["E:/real-time-action-recognition-from-video-footage/dataset/punch/"]
-LIST_OF_KICK_DIR = ["E:/real-time-action-recognition-from-video-footage/dataset/kick/"]
+LIST_OF_SLAP_DIR = ["/home/mushfiqul/Mushfiqul/CSE/Thesis2.0/real-time-action-recognition-from-video-footage/dataset/slap/"]
+LIST_OF_PUNCH_DIR = ["/home/mushfiqul/Mushfiqul/CSE/Thesis2.0/real-time-action-recognition-from-video-footage/dataset/punch/"]
+LIST_OF_KICK_DIR = ["/home/mushfiqul/Mushfiqul/CSE/Thesis2.0/real-time-action-recognition-from-video-footage/dataset/kick/"]
 
 VAL_SET_RATIO = 0.1
 TEST_SET_RATIO = 0.4   # NUMBER_OF_TEST_SET = NUMBER_OF_TOTAL_DATA * TEST_SET_RATIO
 
-PATH_TO_SAVE_SPLITED_DATASET = "E:/real-time-action-recognition-from-video-footage/dataset"
+PATH_TO_SAVE_SPLITED_DATASET = "/home/mushfiqul/Mushfiqul/CSE/Thesis2.0/real-time-action-recognition-from-video-footage/dataset"
 
 def AccumulateAllVideoFromDifferentDir(LIST_OF_DIR_THAT_CONTAINS_VIDEOS_):
     listOfPathToVideos = []
@@ -34,8 +35,7 @@ def AccumulateAllVideoFromDifferentDir(LIST_OF_DIR_THAT_CONTAINS_VIDEOS_):
 def AppendLabelToEachData(LIST_OF_DATA_, action_):
     listOfDataWithLabel = []
     for eachData in LIST_OF_DATA_:
-        eachData += "\t" + action_
-        listOfDataWithLabel.append(eachData)
+        listOfDataWithLabel.append([eachData, action_])
     return listOfDataWithLabel
 
 def Split_Train_Val_Test_Data(LIST_OF_VIDEOS_):
@@ -48,11 +48,6 @@ def Split_Train_Val_Test_Data(LIST_OF_VIDEOS_):
     listOfValVideos = LIST_OF_VIDEOS_[NUMBER_OF_TEST_VIDEOS : (NUMBER_OF_TEST_VIDEOS+NUMBER_OF_VAL_VIDEOS)]
     listOfTrainVideos = LIST_OF_VIDEOS_[(NUMBER_OF_TEST_VIDEOS+NUMBER_OF_VAL_VIDEOS) : ]
     return listOfTrainVideos, listOfValVideos, listOfTestVideos
-
-def WriteDataSetToFile(LIST_OF_DATA_, targetFileName_):
-    with open(targetFileName_, 'w') as fileWriter:
-        for eachData in LIST_OF_DATA_:
-            fileWriter.write(eachData + "\n")
 
 def split():
     print("Splitting the ginen dataset into Train Test={0} Validation={1}".format(TEST_SET_RATIO, VAL_SET_RATIO))
@@ -73,13 +68,20 @@ def split():
     #Preparing Dataset
     listOfTrainData = trainSlapVideos + trainPunchVideos + trainKickVideos
     random.shuffle(listOfTrainData)
-    WriteDataSetToFile(listOfTrainData, os.path.join(PATH_TO_SAVE_SPLITED_DATASET, 'train.txt') )
+    train = pd.DataFrame(listOfTrainData, columns = ['Video_url', 'Action'])
+    train.to_csv(os.path.join(PATH_TO_SAVE_SPLITED_DATASET, 'train.csv'))
 
     listOfValData = valSlapVideos + valPunchVideos + valKickVideos
     random.shuffle(listOfValData)
-    WriteDataSetToFile(listOfValData, os.path.join(PATH_TO_SAVE_SPLITED_DATASET, 'val.txt') )
+    val = pd.DataFrame(listOfValData, columns = ['Video_url', 'Action'])
+    val.to_csv(os.path.join(PATH_TO_SAVE_SPLITED_DATASET, 'val.csv'))
 
     listOfTestData = testSlapVideos + testPunchVideos + testKickVideos
     random.shuffle(listOfTestData)
-    WriteDataSetToFile(listOfTestData, os.path.join(PATH_TO_SAVE_SPLITED_DATASET, 'test.txt') )
+    test = pd.DataFrame(listOfTestData, columns = ['Video_url', 'Action'])
+    test.to_csv(os.path.join(PATH_TO_SAVE_SPLITED_DATASET, 'test.csv'))
     print("Done")
+
+
+if __name__ == '__main__':
+    split()

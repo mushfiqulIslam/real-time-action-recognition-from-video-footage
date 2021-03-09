@@ -1,16 +1,29 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
-# platform: win-64
-@EXPLICIT
-https://repo.anaconda.com/pkgs/main/win-64/ca-certificates-2021.1.19-haa95532_1.conda
-https://repo.anaconda.com/pkgs/main/win-64/vs2015_runtime-14.27.29016-h5e58377_2.conda
-https://repo.anaconda.com/pkgs/main/win-64/vc-14.2-h21ff451_1.conda
-https://repo.anaconda.com/pkgs/main/win-64/openssl-1.1.1j-h2bbff1b_0.conda
-https://repo.anaconda.com/pkgs/main/win-64/zlib-1.2.11-h62dcd97_4.conda
-https://repo.anaconda.com/pkgs/main/win-64/sqlite-3.33.0-h2a8f88b_0.conda
-https://repo.anaconda.com/pkgs/main/win-64/python-3.8.8-hdbf39b2_4.conda
-https://repo.anaconda.com/pkgs/main/win-64/certifi-2020.12.5-py38haa95532_0.conda
-https://repo.anaconda.com/pkgs/main/noarch/wheel-0.36.2-pyhd3eb1b0_0.conda
-https://repo.anaconda.com/pkgs/main/win-64/wincertstore-0.2-py38_0.conda
-https://repo.anaconda.com/pkgs/main/win-64/setuptools-52.0.0-py38haa95532_0.conda
-https://repo.anaconda.com/pkgs/main/win-64/pip-21.0.1-py38haa95532_0.conda
+# platform: linux-64
+_libgcc_mutex=0.1=conda_forge
+_openmp_mutex=4.5=1_gnu
+ca-certificates=2020.12.5=ha878542_0
+certifi=2020.12.5=py38h578d9bd_1
+ld_impl_linux-64=2.35.1=hea4e1c9_2
+libffi=3.3=h58526e2_2
+libgcc-ng=9.3.0=h2828fa1_18
+libgomp=9.3.0=h2828fa1_18
+libstdcxx-ng=9.3.0=h6de172a_18
+ncurses=6.2=h58526e2_4
+numpy=1.20.1=pypi_0
+openssl=1.1.1j=h7f98852_0
+pandas=1.2.3=pypi_0
+pip=21.0.1=pyhd8ed1ab_0
+python=3.8.8=hffdb5ce_0_cpython
+python-dateutil=2.8.1=pypi_0
+python_abi=3.8=1_cp38
+pytz=2021.1=pypi_0
+readline=8.0=he28a2e2_2
+setuptools=49.6.0=py38h578d9bd_3
+six=1.15.0=pypi_0
+sqlite=3.34.0=h74cdb3f_0
+tk=8.6.10=h21135ba_1
+wheel=0.36.2=pyhd3deb0d_0
+xz=5.2.5=h516909a_1
+zlib=1.2.11=h516909a_1010
