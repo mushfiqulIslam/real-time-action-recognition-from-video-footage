@@ -61,15 +61,15 @@ def split():
     train_data_list = train_slap_videos + train_punch_videos + train_kick_videos
     random.shuffle(train_data_list)
     train = pd.DataFrame(train_data_list, columns = ['Video_url', 'action'])
-    train.to_csv(os.path.join(dataset_path, 'train.csv'))
+    train.to_csv(os.path.join(dataset_path, 'train.csv'), index=False)
 
     val_data_list = val_slap_videos + val_punch_videos + val_kick_videos
     random.shuffle(val_data_list)
     val = pd.DataFrame(val_data_list, columns = ['Video_url', 'action'])
-    val.to_csv(os.path.join(dataset_path, 'val.csv'))
+    val.to_csv(os.path.join(dataset_path, 'val.csv'), index=False)
 
     test_data_list = test_slap_videos + test_punch_videos + test_kick_videos
     random.shuffle(test_data_list)
     test = pd.DataFrame(test_data_list, columns = ['Video_url', 'action'])
-    test.to_csv(os.path.join(dataset_path, 'test.csv'))
+    test.to_csv(os.path.join(dataset_path, 'test.csv'), index=False)
     print("Done")
