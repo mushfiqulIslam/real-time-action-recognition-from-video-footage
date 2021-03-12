@@ -4,6 +4,8 @@ dataset_path = "/home/mushfiqul/Mushfiqul/CSE/Thesis2.0/real-time-action-recogni
 slap_path = os.path.join(dataset_path, "slap/")
 punch_path = os.path.join(dataset_path, "punch/")
 kick_path = os.path.join(dataset_path, "kick/")
+train_frames_path_name = 'train_frames'
+train_frames_path = os.path.join(dataset_path, train_frames_path_name, "")
 
 val_dataset_ratio = 0.1
 test_dataset_ratio = 0.4
