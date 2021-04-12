@@ -13,5 +13,3 @@ test_frames_path = os.path.join(dataset_path, test_frames_path_name, "")
 
 val_dataset_ratio = 0.2
 test_dataset_ratio = 0.3
-
-action_nums = {"action": {"slap": 0, "kick": 1, "punch": 3}}
