@@ -12,4 +12,4 @@ val_frames_path = os.path.join(dataset_path, val_frames_path_name, "")
 test_frames_path = os.path.join(dataset_path, test_frames_path_name, "")
 
 val_dataset_ratio = 0.2
-test_dataset_ratio = 0.3
+test_dataset_ratio = 0.2
